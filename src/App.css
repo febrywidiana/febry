@@ -83,12 +83,25 @@ p.danger {
 }
 /************ Navbar Css ************/
 nav.navbar {
-  padding: 18px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
+  position: fixed !important;
+  
+  /* --- PENGATURAN MARGIN & POSISI --- */
+  top: 20px;   /* Margin Atas */
+  left: 20px;  /* Margin Kiri */
+  right: 20px; /* Margin Kanan */
+  width: auto; /* Biarkan browser menghitung lebar otomatis */
+  
+  /* --- BORDER RADIUS (LENGKUNGAN) --- */
+  border-radius: 25px; /* Semakin besar angka, semakin bulat */
+  
+  /* --- ESTETIKA --- */
+  padding: 10px 20px; /* Jarak dalam navbar */
   z-index: 9999;
-  transition:  0.32s ease-in-out;
+  background-color: rgba(18, 18, 18, 0.95); /* Warna hitam transparan */
+  backdrop-filter: blur(10px); /* Efek blur di belakangnya */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Bayangan agar terlihat melayang */
+  border: 1px solid rgba(255,255,255,0.1); /* Garis tipis halus */
+  transition: 0.32s ease-in-out;
 }
 nav.navbar.scrolled {
   padding: 0px 0;
@@ -244,11 +257,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+ background: rgba(18, 18, 18, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
+  border-radius: 10px;
   margin-bottom: 16px;
   display: inline-block;
+  margin-top: 40px;
 }
 .banner h1 {
   font-size: 65px;
@@ -674,58 +689,54 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 @media (max-width: 768px) {
   
-  /* 1. Navbar Container: Relatif agar mendorong banner */
- nav.navbar {
-  padding: 18px 0;
-  position: fixed !important; /* KUNCI UTAMA: Agar diam di atas */
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 9999; /* Agar selalu di lapisan paling depan */
-  transition: 0.32s ease-in-out;
-  background-color: #000000; /* Pastikan ada warna background (jangan transparan total) */
-}
+  nav.navbar {
+    /* Margin lebih kecil di HP */
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    border-radius: 20px;
+    padding: 10px 15px; 
+    background-color: transparent !important;
+  }
 
-  /* 2. Menu Dropdown: Rata Kiri */
+  /* Menu Dropdown disesuaikan agar rapi di dalam border radius */
   nav.navbar .navbar-collapse {
-    text-align: left !important; /* Teks rata kiri */
-    padding-left: 0; /* Hapus padding default */
-    background-color: #000000;
-  }
-
-  /* Item Menu (Home, Skills, Projects) */
-  nav.navbar .nav-link {
-    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    padding-left: 0 !important; /* Pastikan nempel kiri (sejajar logo) */
-    margin-bottom: 5px;
-  }
-  
-  /* Geser dikit menu biar lurus sama Logo "FW" */
-  nav.navbar .navbar-nav {
-    padding-left: 15px; 
+   background: rgba(7, 7, 7, 0.8);/* Hitam transparan */
+    backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(12px);/* Efek blur di belakang menu */
+    margin-top: 10px; /* Jarak antara navbar dan menu dropdown */
+    border-radius: 15px; /* Menu dropdown juga dilengkungkan */
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   }
 
-  /* 3. KONTAINER BAWAH (ICON + BUTTON) */
+  /* Fix padding konten halaman agar tidak ketutup navbar yang melayang */
+  .banner, .profile {
+    padding-top: 120px !important; 
+  }
+
+  /* Style tombol & icon tetap sama seperti sebelumnya */
   span.navbar-text {
     display: flex !important;
-    flex-direction: row !important;   /* Susun ke samping (Horizontal) */
-    align-items: center !important;   /* Rata tengah secara vertikal */
-    justify-content: flex-start !important; /* Mulai dari kiri */
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     margin-top: 15px;
-    padding-left: 15px; /* Samakan lurusnya dengan menu diatas */
+    padding-left: 0; /* Reset padding */
     width: 100%;
   }
-
-  /* 4. SOCIAL ICONS (KIRI) */
+  
   .social-icon {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center;
-    margin-left: 0 !important;      /* Hapus margin kiri bawaan */
-    margin-right: 20px !important;  /* Beri jarak kanan agar tidak nempel tombol Profile */
-    gap: 10px;                      /* Jarak antar icon bulat */
+    margin-right: 15px !important;
   }
+
 
   .social-icon a {
     margin-right: 0 !important;
@@ -752,4 +763,19 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding-bottom: 50px !important;
     margin-top: 0 !important;
   }
+}
+.social-buttons .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+ background-color: #000;
+  
+  padding: 0; /* Reset padding agar icon di tengah */
+  
+ 
+  
+  transition: all 0.3s ease-in-out;
+
+
 }

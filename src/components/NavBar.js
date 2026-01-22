@@ -30,7 +30,7 @@ export const NavBar = () => {
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <h1 className="text-white">FW</h1>
+          <h1 className="text-white">Febry</h1>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav">

@@ -6,7 +6,7 @@ import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import Profile from "./pages/Profile";
 // import { Skills } from "./components/Skills";
-import { Projects } from "./components/Projects";
+// import { Projects } from "./components/Projects";
 // import { Contact } from "./components/Contact";
 import Earth from "./components/Earth";
 
@@ -24,7 +24,7 @@ function App() {
               <Banner />
               <Earth /> 
               {/* <Skills /> */}
-              <Projects />
+              {/* <Projects /> */}
               {/* <Contact />   Newsletter DI HOME SAJA */}
               {/* <Footer />    Footer DI HOME */}
             </>

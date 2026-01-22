@@ -1,12 +1,12 @@
-import { useState, useEffect, useMemo } from "react"; // Import digabung jadi satu di sini
+import { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
+// 1. TAMBAHKAN IMPORT ICON DISINI
+import { ArrowRightCircle, Linkedin, Github, Envelope, Instagram} from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import Earth from "./Earth";
 
 export const Banner = () => {
-  // Gunakan useMemo agar tidak dirender ulang terus menerus (Solusi Vercel)
   const toRotate = useMemo(() => ["Web Developer"], []);
   
   const period = 1200;
@@ -49,24 +49,57 @@ export const Banner = () => {
       <Container>
         <Row className="align-items-center">
 
-          {/* EARTH — MOBILE ATAS, DESKTOP KANAN */}
+          {/* EARTH & SOCIALS — MOBILE ATAS, DESKTOP KANAN */}
           <Col xs={12} md={6} xl={5} className="order-1 order-md-2">
             <TrackVisibility>
               {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible
-                      ? "animate__animated animate__zoomIn earth-wrapper"
-                      : "earth-wrapper"
-                  }
-                >
-                  <Earth />
-                </div>
+                // Gunakan Fragment <>...</> agar bisa memuat 2 elemen (Earth & Socials)
+                <>
+                  <div
+                    className={
+                      isVisible
+                        ? "animate__animated animate__zoomIn earth-wrapper"
+                        : "earth-wrapper"
+                    }
+                  >
+                    <Earth />
+                  </div>
+
+                  {/* 2. KODE SOCIALS DITEMPATKAN DI SINI (DI BAWAH EARTH) */}
+                 {/* 2. KODE SOCIALS (HANYA ICON) */}
+<div 
+  className={isVisible ? "animate__animated animate__fadeInUp socials" : "socials"}
+  style={{ marginTop: "20px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}
+>
+  
+
+  <div className="social-buttons">
+    <a href="https://linkedin.com/in/febry-widiana-6ba48b385" target="_blank" rel="noreferrer" className="btn">
+      <Linkedin size={30} />
+    </a>
+
+    <a href="https://github.com/febrywidiana" target="_blank" rel="noreferrer" className="btn">
+      <Github size={30} />
+    </a>
+
+    <a href="mailto:emailkamu@gmail.com" className="btn">
+      <Envelope size={30} />
+    </a>
+
+    <a href="https://instagram.com/febrywdiana" target="_blank" rel="noreferrer" className="btn">
+      <Instagram size={30} />
+    </a>
+    
+   
+  </div>
+</div>
+                  {/* AKHIR KODE SOCIALS */}
+                </>
               )}
             </TrackVisibility>
           </Col>
 
-          {/* TEXT */}
+          {/* TEXT — MOBILE BAWAH, DESKTOP KIRI */}
           <Col xs={12} md={6} xl={7} className="order-2 order-md-1">
             <TrackVisibility>
               {({ isVisible }) => (
@@ -77,10 +110,10 @@ export const Banner = () => {
                       : ""
                   }
                 >
-                  <span className="tagline">Welcome to my Portfolio</span>
+                  <span className="tagline">Hi! I'm Febry Widiana</span>
 
                   <h1>
-                    Hi! I'm <span className="name">Febry</span>{" "}
+                    <span className="name"></span>{" "}
                     <span className="txt-rotate">
                       <span className="wrap">{text}</span>
                     </span>
@@ -99,7 +132,6 @@ export const Banner = () => {
               )}
             </TrackVisibility>
           </Col>
-
         </Row>
       </Container>
     </section>
