@@ -7,7 +7,7 @@ import Earth from "./Earth";
 
 export const Banner = () => {
   // Gunakan useMemo agar tidak dirender ulang terus menerus (Solusi Vercel)
-  const toRotate = useMemo(() => ["Web Developer", "Web Designer", "UI/UX Designer"], []);
+  const toRotate = useMemo(() => ["Web Developer"], []);
   
   const period = 1200;
   const [loopNum, setLoopNum] = useState(0);
@@ -80,7 +80,7 @@ export const Banner = () => {
                   <span className="tagline">Welcome to my Portfolio</span>
 
                   <h1>
-                    Hi! I'm <span className="name">Febry Widiana</span>{" "}
+                    Hi! I'm <span className="name">Febry</span>{" "}
                     <span className="txt-rotate">
                       <span className="wrap">{text}</span>
                     </span>

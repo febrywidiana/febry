@@ -673,63 +673,77 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 @media (max-width: 768px) {
   
-  /* 1. Navbar Container: Transparan & Relative */
+  /* 1. Navbar Container: Relatif agar mendorong banner */
   nav.navbar {
     position: relative !important; 
-    padding: 15px 0; 
-    background-color: transparent !important; /* Transparan */
-    transition: all 0.4s ease-in-out; /* Animasi halus */
+    padding: 10px 0;
+    background-color: #121212 !important; 
   }
 
-  /* 2. Menu Dropdown: Memberi warna background gelap transparan (Glass effect) */
+  /* 2. Menu Dropdown: Rata Kiri */
   nav.navbar .navbar-collapse {
-    background: rgba(18, 18, 18, 0.95); /* Hitam transparan */
-    backdrop-filter: blur(10px); /* Efek blur di belakang menu */
-    padding: 20px;
-    border-radius: 15px;
+    text-align: left !important; /* Teks rata kiri */
+    padding-left: 0; /* Hapus padding default */
+    background-color: #121212;
+  }
+
+  /* Item Menu (Home, Skills, Projects) */
+  nav.navbar .nav-link {
+    display: block;
+    width: 100%;
+    padding-left: 0 !important; /* Pastikan nempel kiri (sejajar logo) */
+    margin-bottom: 5px;
+  }
+  
+  /* Geser dikit menu biar lurus sama Logo "FW" */
+  nav.navbar .navbar-nav {
+    padding-left: 15px; 
+  }
+
+  /* 3. KONTAINER BAWAH (ICON + BUTTON) */
+  span.navbar-text {
+    display: flex !important;
+    flex-direction: row !important;   /* Susun ke samping (Horizontal) */
+    align-items: center !important;   /* Rata tengah secara vertikal */
+    justify-content: flex-start !important; /* Mulai dari kiri */
     margin-top: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    
-    /* Animasi saat menu muncul */
-    animation: slideDown 0.4s ease-out;
+    padding-left: 15px; /* Samakan lurusnya dengan menu diatas */
+    width: 100%;
   }
 
-  /* Keyframe animasi menu turun */
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* 4. SOCIAL ICONS (KIRI) */
+  .social-icon {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    margin-left: 0 !important;      /* Hapus margin kiri bawaan */
+    margin-right: 20px !important;  /* Beri jarak kanan agar tidak nempel tombol Profile */
+    gap: 10px;                      /* Jarak antar icon bulat */
   }
 
-  /* 3. Animasi Banner: Bergerak halus saat kedorong */
+  .social-icon a {
+    margin-right: 0 !important;
+    width: 35px; /* Kecilkan dikit icon di HP biar muat */
+    height: 35px;
+  }
+  
+  .social-icon a::before {
+     width: 35px;
+     height: 35px;
+  }
+
+  /* 5. TOMBOL PROFILE (KANAN ICON) */
+  .navbar-text button {
+    margin: 0 !important;
+    width: auto !important;         /* Lebar menyesuaikan teks */
+    padding: 10px 20px !important;  /* Padding tombol di HP */
+    font-size: 14px !important;     /* Font agak kecil biar rapi */
+  }
+
+  /* 6. Fix Jarak Banner (Sama seperti sebelumnya) */
   .banner {
     padding-top: 20px !important; 
+    padding-bottom: 50px !important;
     margin-top: 0 !important;
-    transition: all 0.4s ease-in-out; /* Banner turun pelan-pelan */
   }
-
-  /* 4. ANIMASI TOGGLE (HAMBURGER) */
-  /* Saat normal */
-  nav.navbar .navbar-toggler {
-    border: none;
-    transition: 0.3s ease;
-  }
-  
-  nav.navbar .navbar-toggler:focus {
-    box-shadow: none; /* Hilangkan kotak biru fokus */
-  }
-
-  /* Saat menu dibuka (React Bootstrap otomatis nambah atribute aria-expanded) */
-  nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    transform: rotate(90deg); /* Ikon berputar 90 derajat */
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* Efek glow */
-  }
-  
-  nav.navbar .navbar-toggler-icon {
-    transition: transform 0.4s ease, filter 0.4s ease; /* Durasi putaran */
-  }
-
-  /* Posisi Brand & Toggle */
-  nav.navbar .navbar-brand { margin-left: 15px; }
-  nav.navbar .navbar-toggler { margin-right: 15px; }
 }

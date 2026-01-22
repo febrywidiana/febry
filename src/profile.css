@@ -1,9 +1,15 @@
+/* Update bagian ini */
 .profile {
   min-height: 100vh;
   background: radial-gradient(circle at top left, #1a1a1a, #000);
   color: white;
-  padding: 160px 20px 80px;
-  margin-top: 80px;
+  
+  /* PENTING: Margin dibuat 0 agar background nempel ke atas */
+  margin-top: 0 !important; 
+  
+  /* Padding atas diatur agar konten tidak ketutup Navbar */
+  /* Ubah 120px sesuai selera tinggi Navbarmu */
+  padding: 120px 20px 80px; 
 }
 
 .profile-container {
@@ -54,57 +60,7 @@
   margin-bottom: 40px;
 }
 
-/* Social Buttons */
-.social-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.btn {
-  padding: 12px 20px;
-  border-radius: 12px;
-  border: 1px solid #2a2a2a;
-  background: rgba(255, 255, 255, 0.04);
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-}
-
-/* =====================
-   RESPONSIVE MOBILE
-===================== */
-@media (max-width: 768px) {
-  .profile-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-avatar img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .profile-content h1 {
-    font-size: 32px;
-  }
-
-  .about p {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .social-buttons {
-    justify-content: left;
-  }
-}
+/* Social Buttons (Versi Desktop & Default) */
 .social-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -116,20 +72,64 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px 18px;
   border-radius: 30px;
-
   background: #111827;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
-
   transition: all 0.3s ease;
+  border: 1px solid #2a2a2a; /* Menambahkan border agar konsisten */
 }
 
 .social-buttons .btn:hover {
   background: #00bcd4;
   color: #000;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   RESPONSIVE MOBILE
+===================== */
+@media (max-width: 768px) {
+  /* Tambahkan ini agar di HP paddingnya tidak terlalu tinggi */
+  .profile {
+    padding-top: 100px; 
+    margin-top: 0 !important;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    align-items: center; /* Pastikan konten rata tengah */
+    text-align: center; /* Teks rata tengah */
+  }
+
+  .profile-avatar img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px; /* Jarak antara foto dan teks nama */
+  }
+
+  .profile-content h1 {
+    font-size: 32px;
+  }
+  
+  .profile-content {
+    width: 100%; /* Pastikan kontainer teks full width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Paksa item di dalam content ke tengah */
+  }
+
+  .about p {
+    max-width: 100%;
+    text-align: center; /* Ubah ke center agar rapi di HP */
+  }
+
+  /* Perbaikan posisi tombol sosmed di HP */
+  .social-buttons {
+    justify-content: center; /* Tombol rata tengah */
+    width: 100%;
+  }
 }
