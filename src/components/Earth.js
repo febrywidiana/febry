@@ -6,13 +6,15 @@ export default function Earth() {
   const mountRef = useRef(null);
 
   useEffect(() => {
+    const currentMount = mountRef.current;
+
     // SCENE
     const scene = new THREE.Scene();
 
     // CAMERA
     const camera = new THREE.PerspectiveCamera(
       45,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      currentMount.clientWidth / currentMount.clientHeight,
       0.1,
       1000
     );
@@ -21,11 +23,11 @@ export default function Earth() {
     // RENDERER
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
+      currentMount.clientWidth,
+      currentMount.clientHeight
     );
     renderer.setPixelRatio(window.devicePixelRatio);
-    mountRef.current.appendChild(renderer.domElement);
+    currentMount.appendChild(renderer.domElement);
 
     // 🌍 TEXTURE
     const textureLoader = new THREE.TextureLoader();
@@ -67,7 +69,7 @@ export default function Earth() {
 
     // CLEANUP
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      currentMount.removeChild(renderer.domElement);
     };
   }, []);
 

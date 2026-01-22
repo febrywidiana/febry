@@ -9,7 +9,6 @@ import Profile from "./pages/Profile";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
 import Earth from "./components/Earth";
 
 function App() {
