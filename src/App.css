@@ -674,17 +674,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 @media (max-width: 768px) {
   
   /* 1. Navbar Container: Relatif agar mendorong banner */
-  nav.navbar {
-    position: relative !important; 
-    padding: 10px 0;
-    background-color: #121212 !important; 
-  }
+ nav.navbar {
+  padding: 18px 0;
+  position: fixed !important; /* KUNCI UTAMA: Agar diam di atas */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Agar selalu di lapisan paling depan */
+  transition: 0.32s ease-in-out;
+  background-color: #000000; /* Pastikan ada warna background (jangan transparan total) */
+}
 
   /* 2. Menu Dropdown: Rata Kiri */
   nav.navbar .navbar-collapse {
     text-align: left !important; /* Teks rata kiri */
     padding-left: 0; /* Hapus padding default */
-    background-color: #121212;
+    background-color: #000000;
   }
 
   /* Item Menu (Home, Skills, Projects) */

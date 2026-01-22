@@ -1,7 +1,7 @@
 /* Update bagian ini */
 .profile {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, #1a1a1a, #000);
+  background: radial-gradient(circle at top left, #000000, #000);
   color: white;
   
   /* PENTING: Margin dibuat 0 agar background nempel ke atas */
