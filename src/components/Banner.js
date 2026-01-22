@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react"; // Import digabung jadi satu di sini
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
@@ -6,13 +6,14 @@ import TrackVisibility from "react-on-screen";
 import Earth from "./Earth";
 
 export const Banner = () => {
-  const toRotate = ["Febry Widiana Web Developer"];
+  // Gunakan useMemo agar tidak dirender ulang terus menerus (Solusi Vercel)
+  const toRotate = useMemo(() => ["Web Developer", "Web Designer", "UI/UX Designer"], []);
+  
   const period = 1200;
-
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
-  const [delta, setDelta] = useState(80); // ⬅ typing cepat
+  const [delta, setDelta] = useState(80); 
 
   useEffect(() => {
     const tick = () => {
@@ -25,20 +26,17 @@ export const Banner = () => {
 
       setText(updatedText);
 
-      // ⚡ kecepatan dinamis
       setDelta(isDeleting ? 40 : 80);
 
-      // selesai mengetik
       if (!isDeleting && updatedText === fullText) {
         setIsDeleting(true);
-        setDelta(period); // jeda setelah full text
+        setDelta(period);
       }
 
-      // selesai menghapus
       if (isDeleting && updatedText === "") {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
-        setDelta(300); // jeda sebelum ulang
+        setDelta(300);
       }
     };
 
@@ -82,7 +80,7 @@ export const Banner = () => {
                   <span className="tagline">Welcome to my Portfolio</span>
 
                   <h1>
-                    Hi! I'm <span className="name"></span>{" "}
+                    Hi! I'm <span className="name">Febry Widiana</span>{" "}
                     <span className="txt-rotate">
                       <span className="wrap">{text}</span>
                     </span>
@@ -94,7 +92,7 @@ export const Banner = () => {
                     Processing (NLP), dan Web Development.
                   </p>
 
-                  <button>
+                  <button onClick={() => console.log('connect')}>
                     Let’s Connect <ArrowRightCircle size={25} />
                   </button>
                 </div>
