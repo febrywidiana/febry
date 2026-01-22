@@ -14,7 +14,7 @@ const Profile = () => {
 
         {/* Avatar */}
         <div className="profile-avatar">
-          <img src="/profile.jpeg" alt="Profile" />
+          <img src="/laravel.jpg" alt="Profile" />
         </div>
 
         {/* Content */}
