@@ -45,17 +45,6 @@ export const Projects = () => {
     },
   ];
 
-  // 3. DAFTAR PROJECT UNTUK TAB 3 (LAINNYA)
-  const otherProjects = [
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-      techs: ["Python", "Flask", "TensorFlow"],
-      githubUrl: "https://github.com/username/fish-disease-diagnosis"
-    },
-  ];
-
   return (
     <section className="project" id="projects">
       <Container>
@@ -69,16 +58,13 @@ export const Projects = () => {
                   
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     
-                    {/* NAVIGASI TAB */}
+                    {/* NAVIGASI TAB (Hanya sisa Website & ML) */}
                     <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                       <Nav.Item>
                         <Nav.Link eventKey="first">Website</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="second">ML</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link eventKey="third">Other</Nav.Link>
                       </Nav.Item>
                     </Nav>
 
@@ -94,19 +80,10 @@ export const Projects = () => {
                         </Row>
                       </Tab.Pane>
 
-                      {/* --- TAB 2: ML (Perbaikan: eventKey="second") --- */}
+                      {/* --- TAB 2: ML --- */}
                       <Tab.Pane eventKey="second">
                          <Row>
                           {mlProjects.map((project, index) => {
-                            return <ProjectCard key={index} {...project} />
-                          })}
-                        </Row>
-                      </Tab.Pane>
-
-                      {/* --- TAB 3: OTHERS --- */}
-                      <Tab.Pane eventKey="third">
-                        <Row>
-                          {otherProjects.map((project, index) => {
                             return <ProjectCard key={index} {...project} />
                           })}
                         </Row>

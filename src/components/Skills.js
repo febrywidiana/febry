@@ -1,78 +1,96 @@
+import { Container, Row, Col } from "react-bootstrap";
+import { EyeFill } from "react-bootstrap-icons"; 
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
-import colorSharp from "../assets/img/color-sharp.png"
+// Import gambar sertifikat yang BENAR
+import certImg1 from "../assets/img/sf1.png"; 
+import certImg2 from "../assets/img/sf2.png"; 
+import certImg3 from "../assets/img/sf4.png"; 
+import certImg4 from "../assets/img/sf3.png"; 
+import colorSharp from "../assets/img/color-sharp.png"; 
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
+
+  const certificates = [
+    {
+      title: "AI Ignition Training", // Sesuaikan judul
+      description: "KUMPUL & Asian Development Bank", // Sesuaikan deskripsi
+      imgUrl: certImg1, // Pakai variabel certImg1
+      pdfUrl: "/assets/pdf/sertifikat-ai.pdf" // Sesuaikan nama file PDF
     },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
+    {
+      title: "Web Development",
+      description: "Fullstack JavaScript",
+      imgUrl: certImg2, // Ganti dengan gambar sertifikat kedua yang benar
+      pdfUrl: "/assets/pdf/sertifikat-web.pdf"
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
+    {
+      title: "Web Development",
+      description: "Fullstack JavaScript",
+      imgUrl: certImg3, // Ganti dengan gambar sertifikat kedua yang benar
+      pdfUrl: "/assets/pdf/sertifikat-web.pdf"
     },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+    {
+      title: "Web Development",
+      description: "Fullstack JavaScript",
+      imgUrl: certImg4, // Ganti dengan gambar sertifikat kedua yang benar
+      pdfUrl: "/assets/pdf/sertifikat-web.pdf"
+    },
+    // ... tambahkan sertifikat lain di sini
+  ];
 
   return (
-    <section className="skill" id="skills">
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="skill-bx wow zoomIn">
-              <h2>Skills</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br></br> Lorem Ipsum has been the industry's standard dummy text.</p>
-              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                <div className="item">
-                  <img
-                    src="/html.png"
-                    alt="HTML"
-                    className="item-img"
-                  />
-                  <h5>HTML</h5>
-                </div>
+    <section className="certificate-section" id="skills">
+      <Container>
+        <Row>
+          <Col size={12}>
+            <TrackVisibility>
+              {({ isVisible }) =>
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  
+                  <div className="cert-header">
+                    <h2>Sertifikat</h2>
+                    <p>Berikut adalah sertifikat kompetensi yang telah saya miliki.</p>
+                  </div>
 
-                <div className="item">
-                  <img
-                    src="/css.png"
-                    alt="HTML"
-                    className="item-img"
-                  />
-                  <h5>CSS</h5>
-                </div>
-                <div className="item">
-                  <img
-                    src="/tailwind.png"
-                    alt="HTML"
-                    className="item-img"
-                  />
-                  <h5>Tailwind</h5>
-                </div>
-                <div className="item">
-                  <img
-                    src="/laravel.jpg"
-                    alt="HTML"
-                    className="item-img"
-                  />
-                  <h5>Laravel</h5>
-                </div>
-              </Carousel>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img className="background-image-left" src={colorSharp} alt="Background" />
+                  <Row>
+                    {certificates.map((cert, index) => {
+                      return (
+                        // PERBAIKAN DI SINI:
+                        // Gunakan md={6} xl={4} agar di layar besar jadi 3 kolom (lebih kecil & rapi)
+                        <Col key={index} xs={12} md={6} xl={4} className="mb-4">
+                          
+                          <div className="cert-card">
+                            <img src={cert.imgUrl} alt={cert.title} />
+                            
+                            <div className="cert-overlay">
+                              <div className="cert-text">
+                                <h4>{cert.title}</h4>
+                                <span>{cert.description}</span>
+                                
+                                {cert.pdfUrl && (
+                                  <div className="cert-btn-wrapper">
+                                    <a href={cert.pdfUrl} target="_blank" rel="noreferrer" className="btn-cert">
+                                      <EyeFill size={18} /> Lihat Sertifikat
+                                    </a>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                        </Col>
+                      )
+                    })}
+                  </Row>
+
+                </div>}
+            </TrackVisibility>
+          </Col>
+        </Row>
+      </Container>
+      <img className="background-image-left" src={colorSharp} alt="" />
     </section>
   )
 }

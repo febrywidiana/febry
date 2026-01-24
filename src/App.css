@@ -358,14 +358,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .project {
-  margin-top: 70px;
+  margin-top: 60px;
   padding: 80px 0;
   position: relative;
   background-color: black;
 }
 .project h2 {
-	font-size: 45px;
-	font-weight: 700;
+  font-size: 45px;
+  font-weight: 700;
   text-align: center;
 }
 .project p {
@@ -377,6 +377,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   width: 76%;
 }
+
+/* CONTAINER NAV PILLS */
 .project .nav.nav-pills {
   width: 72%;
   margin: 0 auto;
@@ -384,9 +386,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: rgb(255 255 255 / 10%);
   overflow: hidden;
 }
+
+/* ITEM WIDTH: Diubah jadi 50% karena cuma ada 2 tab */
 .project .nav.nav-pills .nav-item {
-  width: 33.33333%;
+  width: 50%; 
 }
+
 .project .nav.nav-pills .nav-link {
   background-color: transparent;
   border-radius: 0;
@@ -402,29 +407,35 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 0;
 }
 .project .nav.nav-pills .nav-link::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
 }
 .project .nav.nav-pills .nav-link.active::before {
-    width: 100% !important;
+  width: 100% !important;
 }
 .project .nav.nav-pills .nav-link.active {
-    border: 1px solid rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
+
+/* BORDER RADIUS UNTUK 2 TAB SAJA */
+
+/* Tab Kiri (Website) - Melengkung Kiri */
 .nav-link#projects-tabs-tab-first {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 55px 0px 0px 55px;
 }
+
+/* Tab Kanan (ML) - Sekarang Melengkung Kanan (Karena jadi yang terakhir) */
 .nav-link#projects-tabs-tab-second {
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0 55px 55px 0; 
 }
 .nav-link#projects-tabs-tab-third {
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -779,4 +790,129 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   transition: all 0.3s ease-in-out;
 
 
+}
+/* =========================================
+   CSS KHUSUS SKILLS / SERTIFIKAT
+   (Class name: .certificate-section)
+   ========================================= */
+
+/* 1. SECTION UTAMA */
+.certificate-section {
+  padding: 80px 0;
+  position: relative;
+  background-color: #000000; /* Bisa dibedakan, misal #0a0a0a */
+  margin-top: 0;
+}
+
+/* Header Text */
+.cert-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cert-header h2 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 50px;
+}
+.cert-header p {
+  color: #B8B8B8;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+/* 2. KARTU SERTIFIKAT (.cert-card) */
+.cert-card {
+  position: relative;
+  border-radius: 20px; /* Sudut melengkung */
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Garis tepi tipis */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s ease-in-out;
+}
+
+/* Gambar Sertifikat */
+/* Gambar Sertifikat */
+.cert-card img {
+  width: 100%;
+  height: 250px; /* TINGGI FIX: Ubah angka ini sesuai selera (misal 200px - 300px) */
+  object-fit: cover; /* PENTING: Agar gambar tidak gepeng, tapi terpotong rapi */
+  object-position: center; /* Posisikan gambar di tengah */
+  transition: 0.5s ease;
+}
+
+/* Efek Hover Overlay (Gelap + Teks) */
+.cert-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Background gelap saat hover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Default sembunyi */
+  transform: scale(0.9); /* Efek zoom in dikit */
+  transition: 0.3s ease-in-out;
+}
+
+/* Saat mouse masuk ke kartu */
+.cert-card:hover .cert-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+.cert-card:hover img {
+  transform: scale(1.1); /* Gambar membesar dikit di belakang */
+}
+
+/* 3. TEKS & TOMBOL DI DALAM KARTU */
+.cert-text {
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+.cert-text h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.cert-text span {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  color: #ccc;
+}
+
+/* Tombol Lihat Sertifikat */
+.cert-btn-wrapper {
+  margin-top: 20px;
+}
+.btn-cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+.btn-cert:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+/* 4. Background Hiasan Kiri (Opsional) */
+.background-image-left {
+  top: 28%;
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  left: 0; /* Posisi di kiri */
+  z-index: -4;
 }
