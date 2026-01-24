@@ -5,9 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import Profile from "./pages/Profile";
-// import { Skills } from "./components/Skills";
-// import { Projects } from "./components/Projects";
-// import { Contact } from "./components/Contact";
+import { Projects } from "./components/Projects"; // Pastikan import ini ada
 import Earth from "./components/Earth";
 
 function App() {
@@ -16,32 +14,29 @@ function App() {
       <NavBar />
 
       <Routes>
-        {/* HOME PAGE */}
+        {/* 1. HOME PAGE */}
         <Route
           path="/"
           element={
             <>
               <Banner />
-              <Earth /> 
-              {/* <Skills /> */}
-              {/* <Projects /> */}
-              {/* <Contact />   Newsletter DI HOME SAJA */}
-              {/* <Footer />    Footer DI HOME */}
+              <Earth />
             </>
           }
         />
 
-        {/* PROFILE PAGE */}
+        {/* 2. PROFILE PAGE (Hapus Projects dari sini) */}
         <Route
           path="/profile"
-          element={
-            <>
-              <Profile />
-              {/* Tidak ada Contact / Newsletter */}
-               {/* boleh footer, opsional */}
-            </>
-          }
+          element={<Profile />}
         />
+
+        {/* 3. NEW PROJECTS PAGE (Buat Route Baru) */}
+        <Route
+          path="/projects"
+          element={<Projects />}
+        />
+
       </Routes>
     </Router>
   );
