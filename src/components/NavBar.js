@@ -3,7 +3,6 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
-
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
@@ -11,7 +10,7 @@ import navIcon3 from "../assets/img/nav-icon3.svg";
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-  const [expanded, setExpanded] = useState(false); // ⬅️ kontrol toggle
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,14 +38,12 @@ export const NavBar = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            
+            {/* --- HOME --- */}
             <Nav.Link
               as={HashLink}
               to="/#home"
-              className={
-                activeLink === "home"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
+              className={activeLink === "home" ? "active navbar-link" : "navbar-link"}
               onClick={() => {
                 setActiveLink("home");
                 setExpanded(false);
@@ -55,14 +52,11 @@ export const NavBar = () => {
               Home
             </Nav.Link>
 
+            {/* --- SKILLS --- */}
             <Nav.Link
               as={HashLink}
               to="/skills"
-              className={
-                activeLink === "skills"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
+              className={activeLink === "skills" ? "active navbar-link" : "navbar-link"}
               onClick={() => {
                 setActiveLink("skills");
                 setExpanded(false);
@@ -71,14 +65,11 @@ export const NavBar = () => {
               Skills
             </Nav.Link>
 
+            {/* --- PROJECTS --- */}
             <Nav.Link
               as={HashLink}
               to="/projects"
-              className={
-                activeLink === "projects"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
+              className={activeLink === "projects" ? "active navbar-link" : "navbar-link"}
               onClick={() => {
                 setActiveLink("projects");
                 setExpanded(false);
@@ -86,6 +77,21 @@ export const NavBar = () => {
             >
               Projects
             </Nav.Link>
+
+            {/* --- RESUME (BARU) --- */}
+            <Nav.Link
+              href="/assets/pdf/resume.pdf" // Pastikan path ini sesuai lokasi file di folder PUBLIC
+              target="_blank" // Membuka di tab baru
+              rel="noopener noreferrer" // Keamanan
+              className={activeLink === "resume" ? "active navbar-link" : "navbar-link"}
+              onClick={() => {
+                setActiveLink("resume");
+                setExpanded(false);
+              }}
+            >
+              Resume
+            </Nav.Link>
+
           </Nav>
 
           <span className="navbar-text">
